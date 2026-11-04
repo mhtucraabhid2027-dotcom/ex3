@@ -76,7 +76,7 @@ header {
 }
 
 .logo img {
-    width: 100%; /* 圖片寬度填滿父層 */
+    width: 100%; /* 圖片寬度填滿 */
     margin: auto; /* 圖片置中 */
     background: rgba(180, 140, 110, 0.3); /* 底色改為具透明度的淡棕色 */
     border-radius: 50%; /* 將圖片變成正圓形 */
