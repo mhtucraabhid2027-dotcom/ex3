@@ -1,7 +1,7 @@
 /* =========================================
    字體匯入區塊
 ========================================= */
-/* 導入可愛圓潤風格的 Google 字體：Mali 與 Nunito */
+/* 導入 Google 字體：Mali 與 Nunito */
 @import url('https://fonts.googleapis.com/css2?family=Mali:wght@400;700&family=Nunito:wght@400;700&display=swap');
 
 
@@ -28,7 +28,6 @@ body {
     /* 選取時的文字顏色為純白 */
     color: #FFFFFF;
     
-    /* (註：以下文字與字體設定在 ::selection 中通常無效，但保留您的原始設定) */
     white-space: nowrap; /* 強制文字不換行 */
     font-size: clamp(0.75rem, 1.2vw, 1rem); /* RWD設定：字體大小隨螢幕縮放 */
     overflow: hidden;
