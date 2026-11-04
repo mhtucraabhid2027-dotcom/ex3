@@ -17,7 +17,7 @@ body {
     color: #5C3A21; 
     /* 溫潤的米白飯底色 (網頁背景色) */
     background-color: #FDF8F5; 
-    /* 設定可愛字體優先順序：優先使用 Mali 與 Nunito，若無則使用備用字體 */
+    /* 設定字體優先順序：優先使用 Mali 與 Nunito */
     font-family: 'Mali', 'Nunito', 'Comic Sans MS', 'Microsoft JhengHei', sans-serif;
 }
 
