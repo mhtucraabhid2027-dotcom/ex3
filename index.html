@@ -1,141 +1,146 @@
-<!doctype html>
-<html>
+<!doctype html> <!-- 宣告這是一份 HTML5 格式的網頁文件，讓瀏覽器用正確的標準來解析 -->
+<html> <!-- 網頁的根元素，所有網頁內容都被包在這個標籤裡面 -->
 
-<head><!--設定頁面基本資訊+外部連結-->
-<meta charset="utf-8">
-<title>portfolio</title>
-<link rel="stylesheet" type="text/css" href="css/ex3.css">
+<head>
+    <!-- 設定網頁的基本資訊與外部資源連結（此區塊的內容不會直接顯示在網頁畫面上） -->
+    <meta charset="utf-8"> <!-- 設定網頁的字元編碼為 UTF-8，確保支援繁體中文等多國語言，避免亂碼 -->
+    <title>portfolio</title> <!-- 設定網頁標題，會顯示在瀏覽器的分頁標籤上 -->
+    <link rel="stylesheet" type="text/css" href="css/ex3.css"> <!-- 連結外部的 CSS 樣式表檔案，用來控制網頁的排版與外觀 -->
 </head>
 
-<body><!--瀏覽器看得見的內容-->
-<!--header-->
-<header>
-    <div class="menu">
-        <!--logo-->
-        <div class="logo">
-            <a href="https://ex3-lovat.vercel.app/">
-            <img src="images/logo1.png">
-            </a>
+<body>
+    <!-- 網頁的主體，所有讓使用者在瀏覽器視窗中看得到的可視內容都放在這裡 -->
+
+    <!-- header：網頁的頁首區塊，通常包含商標（Logo）與主導覽列 -->
+    <header>
+        <div class="menu"> <!-- 建立一個區塊（div）用來包裝整個選單，方便用 CSS 設定寬度與對齊 -->
+            
+            <!-- logo 區塊：放置網站商標，並設定超連結，點擊後可連回首頁 -->
+            <div class="logo">
+                <a href="https://ex3-lovat.vercel.app/">
+                    <img src="images/logo1.png" alt="網站Logo"> <!-- 顯示商標圖片 -->
+                </a>
+            </div>
+            
+            <!-- nav：導覽列（Navigation），用來放置網站的主要分頁連結 -->
+            <nav>
+                <a href="p2.html">關於控肉</a> <!-- a 標籤代表超連結，href 屬性設定點擊後要前往的網址或頁面 -->
+                <a href="p1.html">控肉的各種冷知識</a>
+                <a href="p1.html">要吃幾碗飯競賽攻略</a>
+                <a href="p2.html">友善連結</a>
+            </nav>
         </div>
-        <!--nav-->
-        <nav>
-            <a href="p2.html">關於控肉</a>
-            <a href="p1.html">控肉的各種冷知識</a>
-            <a href="p1.html">要吃幾碗飯競賽攻略</a>
-            <a href="p2.html">友善連結</a>
-        </nav>
+    </header>
+
+    <!-- hero：主視覺區塊，通常放置大張的橫幅圖片與網站最主要的大標題 -->
+    <div class="hero">
+        <img src="images/hero1.jpg" alt="hero"> <!-- 主視覺圖片 -->
+        <h1>控肉控的控肉攻略</h1> <!-- h1 為網頁中層級最高、最重要的大標題 -->
     </div>
-    
-</header>
 
-<!--hero-->
-<div class="hero">
-    <img src="images/hero1.jpg" alt="hero">
-    <h1>控肉控的控肉攻略</h1>
-</div>
-
-<div class="marquee">
-    <div class="marquee-track">
-        <!-- 第一組文字 -->
-        <div class="marquee-content">
-            歡迎光臨！今日特餐：極品控肉飯 🍖 限量供應中，售完為止！
-        </div>
-        <!-- 第二組文字（需與第一組完全相同，以達成無縫循環效果） -->
-        <div class="marquee-content">
-            歡迎光臨！今日特餐：極品控肉飯 🍖 限量供應中，售完為止！
+    <!-- marquee：跑馬燈區塊，用來顯示滾動的宣傳文字 -->
+    <div class="marquee">
+        <div class="marquee-track"> <!-- 用來製作 CSS 動畫滾動軌道的容器 -->
+            <!-- 第一組文字 -->
+            <div class="marquee-content">
+                歡迎光臨！今日特餐：極品控肉飯 🍖 限量供應中，售完為止！
+            </div>
+            <!-- 第二組文字：為了讓 CSS 跑馬燈動畫無縫接軌迴圈，必須放置一組完全一樣的內容 -->
+            <div class="marquee-content">
+                歡迎光臨！今日特餐：極品控肉飯 🍖 限量供應中，售完為止！
+            </div>
         </div>
     </div>
-</div>
 
-<!--card section-->
-<section>
-    <h1>— 控肉控必須知道的事 —</h1>
-        <!--card-->
+    <!-- card section：卡片導覽區塊，用 section 標籤來劃分一個具特定主題的內容區段 -->
+    <section>
+        <h1>— 控肉控必須知道的事 —</h1> <!-- 該區段的主題標題 -->
+        
+        <!-- card：個別的卡片區塊，包含圖片、標題與簡介，並且整張卡片包在 a 標籤內使其可點擊 -->
         <div class="card">
             <a href="p2.html">
-            <img src="images/1.jpg">
-            <h2>如何成為成功的控肉</h2>
-            <p>控肉標準章程</p>
+                <img src="images/1.jpg" alt="卡片圖片">
+                <h2>如何成為成功的控肉</h2> <!-- h2 為次級標題，層級在 h1 之下 -->
+                <p>控肉標準章程</p> <!-- p 代表段落（Paragraph），用來放置一般說明的文字 -->
             </a>
         </div>
 
         <div class="card">
             <a href="p1.html">
-            <img src="images/2.png">
-            <h2>控肉攻略</h2>
-            <p>美味的秘訣</p>
+                <img src="images/2.png">
+                <h2>控肉攻略</h2>
+                <p>美味的秘訣</p>
             </a>
         </div>
 
         <div class="card">
             <a href="p2.html">
-            <img src="images/3.png">
-            <h2>好友募集</h2>
-            <p>投稿與獎勵方式</p>
+                <img src="images/3.png">
+                <h2>好友募集</h2>
+                <p>投稿與獎勵方式</p>
             </a>
         </div>
 
         <div class="card">
             <a href="p1.html">
-            <img src="images/4.png">
-            <h2>美食地圖</h2>
-            <p>控肉王國</p>
+                <img src="images/4.png">
+                <h2>美食地圖</h2>
+                <p>控肉王國</p>
             </a>
         </div>
+    </section>
 
-</section>
+    <!-- description section：文章介紹區塊 -->
+    <section>
+        <h1>— 控肉五四三 —</h1>
+        
+        <!-- article：代表一篇獨立、完整的文章或內容區塊 -->
+        <article>
+            <!-- a_left：文章的左側區塊，負責放置圖片與懸停時顯示的「More」按鈕 -->
+            <div class="a_left">
+                <img src="images/hero1.jpg" />
+                <a href="p2.html">    
+                    <div class="moreb">More</div> <!-- CSS 設計中隱藏的按鈕，滑鼠移入時才會出現 -->
+                </a>
+            </div>
 
-<!--description section-->
-<section>
-    <h1>— 控肉五四三 —</h1>
-    <article>
-
-        <div class="a_left">
-            <img src="images/hero1.jpg" />
-            <a href="p2.html">    
-                <div class="moreb"></div>
-            </a>
-        </div>
-
-        <div class="a_right">
-            <h2>自我的介紹</h2>
-            <p>隆重介紹小吃界的「曼哈頓教主」－控肉！這塊穿著焦糖色外衣的三層肉，畢生都在追求完美的黃金比例：個別的豬皮要像果凍般Q彈閃亮，中間的油花負責入口即化，底層的瘦肉則濃縮吸飽醬汁精華。
+            <!-- a_right：文章的右側區塊，負責放置文章標題與內文段落 -->
+            <div class="a_right">
+                <h2>自我的介紹</h2>
+                <p>隆重介紹小吃界的「曼哈頓教主」－控肉！這塊穿著焦糖色外衣的三層肉，畢生都在追求完美的黃金比例：個別的豬皮要像果凍般Q彈閃亮，中間的油花負責入口即化，底層的瘦肉則濃縮吸飽醬汁精華。
 
 每天，控肉們都會在老滷汁溫泉裡做SPA，用八角和冰糖保養著水嫩肌膚。當它被夾起時，在熱騰騰的白飯山尖時穩定駐足，將使出終極必殺技“療愈休止波”，沐浴出讓人瞬間清醒的鹹甜魔法。
 
 千萬要小心！這隻軟萌的「白飯小偷」，絕對不會留情地清空你的飯碗，讓你徹底把減肥拋在腦後，順便在體重計上留下甜蜜的「愛的印記」喔！</p>
-        </div>
+            </div>
+        </article>
 
-    </article>
+        <!-- 第二篇文章區塊，結構與上方 article 相同 -->
+        <article>
+            <div class="a_left">
+                <img src="images/hero2.jpg" />
+                <a href="p2.html">    
+                    <div class="moreb">More</div>
+                </a>
+            </div>
 
-    <article>
-
-        <div class="a_left">
-            <img src="images/hero2.jpg" />
-            <a href="p2.html">    
-                <div class="moreb"></div>
-            </a>
-        </div>
-
-        <div class="a_right">
-            <h2>香菜新手村</h2>
-            <p>在美食界的相親大會上，胖嘟嘟的「控肉」與自帶爭議體質的「香菜」，絕對是最戲劇化的靈魂搭檔！
+            <div class="a_right">
+                <h2>香菜新手村</h2>
+                <p>在美食界的相親大會上，胖嘟嘟的「控肉」與自帶爭議體質的「香菜」，絕對是最戲劇化的靈魂搭檔！
 
 當油亮亮、攜帶「毛髮」的控肉在白飯上穩穩駐足，正準備用暈染暈暈的客人時，頂著一頭翠綠捲髮的「香菜精靈」俱樂部空華麗降！
 
 「嘿，胖子，你太油了！」香菜傲嬌地趴在控肉的Q彈皮豬上。 「你懂什麼，這叫幸福的油脂！」控肉雖然嘴硬，卻超愛香菜帶來的清新解膩感。
 
 這對歡喜冤家嘴裡一拍即合，香菜的狂野香氣完美中和了控肉的罪惡感，讓人忍不住猛扒飯。不過，可愛的神仙眷情侶的恩愛秀觀眾卻很挑的——畢竟對「反香菜聯盟」的客人來說，這根本就是一場華麗的綠色生化危機呢！</p>
-        </div>
+            </div>
+        </article>
+    </section>
 
-    </article>
-
-</section>
-
-<!--footer-->
-<footer>
-&copy;2026 All Right Reserved.
-</footer>
+    <!-- footer：網頁的頁尾區塊，通常放置版權聲明、聯絡資訊等次要資訊 -->
+    <footer>
+        &copy;2026 All Right Reserved. <!-- &copy; 是 HTML 實體字元，會在網頁上顯示為版權符號 © -->
+    </footer>
 
 </body>
 </html>

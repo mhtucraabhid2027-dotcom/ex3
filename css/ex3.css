@@ -1,366 +1,420 @@
-/* 導入可愛圓潤風格的字體 */
+/* =========================================
+   字體匯入區塊
+========================================= */
+/* 導入可愛圓潤風格的 Google 字體：Mali 與 Nunito */
 @import url('https://fonts.googleapis.com/css2?family=Mali:wght@400;700&family=Nunito:wght@400;700&display=swap');
 
+
+/* =========================================
+   全站基礎設定 (Base Styles)
+========================================= */
 body {
-    padding: 0;
-    margin: 0;
-    font-size: 1.2rem;
-    /* 控肉的深棕色 */
+    padding: 0; /* 清除瀏覽器預設的內距 */
+    margin: 0;  /* 清除瀏覽器預設的外距，讓網頁貼齊邊緣 */
+    font-size: 1.2rem; /* 設定全站基礎字體大小 */
+    
+    /* 控肉的深棕色 (文字顏色) */
     color: #5C3A21; 
-    /* 溫潤的米白飯底色 */
+    /* 溫潤的米白飯底色 (網頁背景色) */
     background-color: #FDF8F5; 
-    /* 設定可愛字體 */
+    /* 設定可愛字體優先順序：優先使用 Mali 與 Nunito，若無則使用備用字體 */
     font-family: 'Mali', 'Nunito', 'Comic Sans MS', 'Microsoft JhengHei', sans-serif;
 }
 
+/* 反白選取文字時的樣式 */
 ::selection {
-    /* 焦糖橘色 */
+    /* 選取時的背景色為焦糖橘色 */
     background: #D97736;
+    /* 選取時的文字顏色為純白 */
     color: #FFFFFF;
-    white-space: nowrap; /* 強制文字不換行 */
-    /* 字體大小縮放：最小 12px (0.75rem)，浮動值 1.2vw，最大約 16px (1rem) */
-    font-size: clamp(0.75rem, 1.2vw, 1rem); 
     
+    /* (註：以下文字與字體設定在 ::selection 中通常無效，但保留您的原始設定) */
+    white-space: nowrap; /* 強制文字不換行 */
+    font-size: clamp(0.75rem, 1.2vw, 1rem); /* RWD設定：字體大小隨螢幕縮放 */
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+/* 所有的超連結基礎設定 */
 a {
-    text-decoration: none;
-    color: #8B4513;
-    display: inline-block;
-    transition: color 0.3s ease;
+    text-decoration: none; /* 移除超連結預設的底線 */
+    color: #8B4513; /* 預設深棕色 */
+    display: inline-block; /* 讓超連結可以設定寬高與內外距 */
+    transition: color 0.3s ease; /* 設定顏色改變時的漸變轉場動畫，時間 0.3 秒 */
 }
 
+/* 滑鼠移至超連結上方時的樣式 */
 a:hover {
-    color: #D97736;
+    color: #D97736; /* 變成亮橘色 */
 }
 
-/*header*/
+
+/* =========================================
+   頁首與導覽列 (Header & Navigation)
+========================================= */
+/* header 區塊 */
 header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: auto;
-    z-index: 200000;
-    background: rgba(253, 248, 245, 0.95);
-    box-shadow: 0 4px 15px rgba(92, 58, 33, 0.1);
+    position: fixed; /* 固定在螢幕畫面上，不隨滾動條移動 */
+    top: 0; /* 貼齊畫面最上方 */
+    width: 100%; /* 寬度滿版 */
+    height: auto; /* 高度隨內容自動調整 */
+    z-index: 200000; /* 設定極高的層級，確保導覽列永遠蓋在其他元素最上層 */
+    background: rgba(253, 248, 245, 0.95); /* 帶有 95% 不透明度的背景，呈現微透視感 */
+    box-shadow: 0 4px 15px rgba(92, 58, 33, 0.1); /* 底部添加柔和的陰影產生立體感 */
 }
 
-/*menu*/
+/* menu 選單容器 */
 .menu {
-    width: 80%;
-    margin: 10px auto;
-    display: flex;
-    align-items: center;
+    width: 80%; /* 寬度佔畫面的 80% */
+    margin: 10px auto; /* 上下邊距 10px，左右置中 */
+    display: flex; /* 使用 Flexbox 排版，讓 Logo 和導覽列並排 */
+    align-items: center; /* 讓內部元素垂直置中對齊 */
 }
 
-
-/*logo*/
+/* logo 區塊 */
 .logo {
-    flex: 0 0 120px;
+    flex: 0 0 120px; /* 固定寬度為 120px，不隨畫面伸縮 */
 }
 
 .logo img {
-    width: 100%;
-    margin: auto;
-    /* 【已修改】底色改為具透明度的淡棕色 */
-    background: rgba(180, 140, 110, 0.3);
-    border-radius: 50%;
-    /* 【已修改】外框改為橘棕色實線 */
-    border: 3px solid #D97736; 
-    padding: 5px;
-    box-sizing: border-box;
+    width: 100%; /* 圖片寬度填滿父層 */
+    margin: auto; /* 圖片置中 */
+    background: rgba(180, 140, 110, 0.3); /* 底色改為具透明度的淡棕色 */
+    border-radius: 50%; /* 將圖片變成正圓形 */
+    border: 3px solid #D97736; /* 外框改為橘棕色實線 */
+    padding: 5px; /* 圖片與外框的距離 */
+    box-sizing: border-box; /* 確保內距與邊框計算在總寬度內，不會撐破版面 */
 }
 
-/*nav*/
+/* nav 導覽連結區塊 */
 nav {
-    flex: 1;
-    text-align: right;
+    flex: 1; /* 佔據 Flexbox 中剩餘的所有空間 */
+    text-align: right; /* 文字靠右對齊 */
 }
 
 nav a {
-    padding: 30px;
-    font-weight: bold;
-    font-size: 1.3rem;
+    padding: 30px; /* 連結的點擊範圍變大 */
+    font-weight: bold; /* 字體加粗 */
+    font-size: 1.3rem; /* 字體大小 */
 }
 
 nav a:hover {
-    text-decoration: none;
-    background-color: rgba(217, 119, 54, 0.1);
-    border-radius: 20px;
+    text-decoration: none; /* 滑鼠懸停時依然不顯示底線 */
+    background-color: rgba(217, 119, 54, 0.1); /* 滑鼠懸停時加上極淡的橘色背景 */
+    border-radius: 20px; /* 懸停背景加上圓角 */
 }
 
-/*hero*/
+
+/* =========================================
+   主視覺區塊 (Hero Section)
+========================================= */
 .hero {
-    position: relative;   
-    width: 100%;
-    height: 90vh;
+    position: relative; /* 設定相對定位，讓內部的標題可以絕對定位 */ 
+    width: 100%; /* 寬度滿版 */
+    height: 90vh; /* 高度設定為螢幕視窗高度的 90% */
     /* 白、橘、棕交織的藝術漸層背景，象徵控肉的油脂與滷汁 */
     background: linear-gradient(135deg, #FDF8F5 0%, #F5D3B3 40%, #D97736 100%);
-    white-space: nowrap; /* 強制文字不換行 */
-    /* 字體大小縮放：最小 12px (0.75rem)，浮動值 1.2vw，最大約 16px (1rem) */
-    font-size: clamp(0.75rem, 1.2vw, 1rem); 
     
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: nowrap; /* 強制區塊內文字不換行 */
+    /* RWD設定：字體大小縮放，最小 12px (0.75rem)，最大約 16px (1rem) */
+    font-size: clamp(0.75rem, 1.2vw, 1rem); 
+    overflow: hidden; /* 超出區塊範圍的內容隱藏 */
+    text-overflow: ellipsis; /* 文字超出時顯示刪節號... */
 }
 
 .hero img {
-    width: 100%;
+    width: 100%; /* 寬高填滿父層 */
     height: 100%;
-    object-fit: cover;
-    object-position: bottom;
-    /* 微微加上復古暖色濾鏡 */
+    object-fit: cover; /* 讓圖片保持比例填滿區塊，多餘部分會被裁切 (類似背景圖效果) */
+    object-position: bottom; /* 圖片對齊重點為底部 */
+    /* 微微加上復古暖色濾鏡 (褐色濾鏡 20%，對比度 1.1 倍) */
     filter: sepia(20%) contrast(1.1); 
-    white-space: nowrap; /* 強制文字不換行 */
-    /* 字體大小縮放：最小 12px (0.75rem)，浮動值 1.2vw，最大約 16px (1rem) */
-    font-size: clamp(0.75rem, 1.2vw, 1rem); 
     
+    white-space: nowrap; 
+    font-size: clamp(0.75rem, 1.2vw, 1rem); 
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .hero h1 {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: absolute; /* 絕對定位，浮在圖片上方 */
+    top: 20%; /* 距離頂部 20% */
+    left: 50%; /* 距離左側 50% */
+    transform: translate(-50%, -50%); /* 向左向上了自身寬高的 50%，達成完美置中效果 */
     
+    /* RWD設定：字體大小會隨螢幕寬度 (vw) 自動縮放，最小 40px，最大 100px */
     font-size: clamp(40px, 8vw, 100px); 
-    white-space: nowrap; 
+    white-space: nowrap; /* 強制標題文字不換行，保持單行排版 */
     color: #5C3A21;
+    /* 文字陰影：創造白底+橘底的可愛雙層立體感 */
     text-shadow: 4px 4px 0px #FFFFFF, 8px 8px 0px #D97736;
     font-weight: 700;
-    
 }
 
-/*marquee*/
+
+/* =========================================
+   跑馬燈區塊 (Marquee)
+========================================= */
 .marquee {
-    width: 100%;
-    overflow: hidden;
-    /* 滷汁深橘色 */
-    background: #D97736; 
-    color: #FFFFFF;
-    padding: 20px 0;
+    width: 100%; /* 滿版寬度 */
+    overflow: hidden; /* 隱藏跑出視窗外的文字 */
+    background: #D97736; /* 滷汁深橘色背景 */
+    color: #FFFFFF; /* 文字白色 */
+    padding: 20px 0; /* 上下內距 */
+    /* 上下加上深棕色虛線，增加設計感 */
     border-top: 4px dashed #5C3A21;
     border-bottom: 4px dashed #5C3A21;
 }
 
 .marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marquee 20s linear infinite;
+    display: flex; /* 讓裡面的文字區塊橫向排列 */
+    width: max-content; /* 軌道寬度等於內容的總長度 */
+    animation: marquee 20s linear infinite; /* 套用下方定義的動畫，20秒跑完一次，等速，無限循環 */
 }
 
+/* 定義跑馬燈動畫關鍵影格 */
 @keyframes marquee {
     from {
-        transform: translateX(0);
+        transform: translateX(0); /* 起點：X軸不移動 */
     }
     to {
-        transform: translateX(-50%);
+        transform: translateX(-50%); /* 終點：向左移動剛好一半的距離 (達成無縫接軌) */
     }
 }
 
 .marquee-content {
-    flex-shrink: 0;
-    padding-right: 0px;
-    white-space: nowrap;
-    font-size: max(1.5rem, 1vw); 
+    flex-shrink: 0; /* 防止跑馬燈內容被擠壓變形 */
+    padding-right: 0px; 
+    white-space: nowrap; /* 強制跑馬燈文字不換行 */
+    font-size: max(1.5rem, 1vw); /* RWD設定：字體最小 1.5rem，若螢幕寬度 1vw 更大則放大 */
     font-weight: bold;
 }
 
-/*section*/
+
+/* =========================================
+   內容區塊佈局 (Section)
+========================================= */
 section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    width: 80%;
-    margin: auto;
-    margin-top: 60px;
+    display: flex; /* 使用 Flexbox 排列內容 */
+    flex-wrap: wrap; /* 允許內部元素換行排列 */
+    gap: 20px; /* 元素之間的間距為 20px */
+    width: 80%; /* 寬度佔畫面的 80% */
+    margin: auto; /* 區塊置中 */
+    margin-top: 60px; /* 與上方區塊保持距離 */
 }
 
 section h1 {
-    flex: 0 0 100%; 
+    flex: 0 0 100%; /* 標題獨佔一整行 (寬度100%) */
     color: #5C3A21;
-    text-align: center;
+    text-align: center; /* 標題置中 */
     font-size: 3rem;
-    text-shadow: 2px 2px 5px rgba(217, 119, 54, 0.3);
+    text-shadow: 2px 2px 5px rgba(217, 119, 54, 0.3); /* 淡淡的橘色陰影 */
 }
 
-/*card*/
+
+/* =========================================
+   卡片區塊 (Cards)
+========================================= */
 .card {
+    /* RWD佈局計算：一行放 4 個，減去三個 20px 的間距後平均分配寬度 */
     flex: 0 0 calc((100% - 20px * 3) / 4);
-    text-align: center;
-    cursor: pointer;
-    white-space: nowrap; /* 強制文字不換行 */
-    /* 字體大小縮放：最小 12px (0.75rem)，浮動值 1.2vw，最大約 16px (1rem) */
-    font-size: clamp(0.75rem, 1.2vw, 1rem); 
+    text-align: center; /* 卡片內容置中 */
+    cursor: pointer; /* 滑鼠移過去變成手指圖示，提示可點擊 */
     
+    white-space: nowrap; /* 強制文字不換行 */
+    /* RWD設定：縮放字體 */
+    font-size: clamp(0.75rem, 1.2vw, 1rem); 
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .card img {
-    width: 80%;
-    border-radius: 50%;
-    /* 橘色實心粗邊框 */
-    border: 5px solid #D97736;
-    box-shadow: 0 8px 15px rgba(92, 58, 33, 0.15);
+    width: 80%; /* 圖片寬度為卡片的 80% */
+    border-radius: 50%; /* 圖片變正圓 */
+    border: 5px solid #D97736; /* 橘色實心粗邊框 */
+    box-shadow: 0 8px 15px rgba(92, 58, 33, 0.15); /* 底部陰影 */
     
+    /* 預設旋轉角度為 0 (不旋轉) */
     -ms-transform: rotate(0deg); 
     -webkit-transform: rotate(0deg); 
     transform: rotate(0deg); 
     
+    /* 設定轉場動畫：所有 transform 效果耗時 0.6 秒，並使用彈性貝茲曲線創造回彈感 */
     transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     -webkit-transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    white-space: nowrap; /* 強制文字不換行 */
-    /* 字體大小縮放：最小 12px (0.75rem)，浮動值 1.2vw，最大約 16px (1rem) */
-    font-size: clamp(0.75rem, 1.2vw, 1rem); 
     
+    white-space: nowrap; 
+    font-size: clamp(0.75rem, 1.2vw, 1rem); 
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+/* 滑鼠懸停在卡片時，針對裡面的圖片產生特效 */
 .card:hover img {
+    /* 往左旋轉 15 度，並放大 1.1 倍 (產生可愛的跳動感) */
     -ms-transform: rotate(-15deg) scale(1.1); 
     -webkit-transform: rotate(-15deg) scale(1.1); 
     transform: rotate(-15deg) scale(1.1); 
 }
 
-/*article*/
-article {
-    flex: 0 0 100%;
-    margin: auto;
-    margin-bottom: 40px;
-    border: solid 4px #D97736;
-    border-radius: 40px;
-    box-sizing: border-box;
-    background-color: #FFFFFF;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 
-    display: flex;
-    overflow: hidden;
-    transition: all 0.4s ease;
+/* =========================================
+   文章區塊 (Article)
+========================================= */
+article {
+    flex: 0 0 100%; /* 文章區塊獨佔一行 */
+    margin: auto;
+    margin-bottom: 40px; /* 每篇文章底部距離 40px */
+    border: solid 4px #D97736; /* 橘棕色邊框 */
+    border-radius: 40px; /* 大圓角設計，讓矩形變得圓潤可愛 */
+    box-sizing: border-box;
+    background-color: #FFFFFF; /* 白色底色 */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* 輕微的立體陰影 */
+
+    display: flex; /* 將內部左右區塊水平排列 */
+    overflow: hidden; /* 確保內部圖片或內容不會超出版框圓角 */
+    transition: all 0.4s ease; /* 懸停時的漸變效果 */
 }
 
+/* 排版設計：針對偶數項 (第2, 4, 6...個) 文章，將左右圖片與文字反轉排列 */
 section > a:nth-of-type(2n) article {
     flex-direction: row-reverse;
 } 
 
+/* 滑鼠懸停在文章時的特效 */
 article:hover {
-    border: solid 8px #5C3A21;
-    background: rgba(217, 119, 54, 0.1);
-    transform: translateY(-5px);
+    border: solid 8px #5C3A21; /* 邊框變深且變粗 */
+    background: rgba(217, 119, 54, 0.1); /* 底色變成淡橘色 */
+    transform: translateY(-5px); /* 整個區塊微微向上浮起 */
 }
 
+/* 文章左側圖片區塊 */
 .a_left {
-    flex: 1;
+    flex: 1; /* 佔文章的一半空間 */
 }
 
 .a_left img {
     float: left;
-    width: 100%;
+    width: 100%; /* 填滿區塊 */
     height: 100%;
-    object-fit: cover;
-    object-position: center;
+    object-fit: cover; /* 保持比例填滿並裁切多餘部分 */
+    object-position: center; /* 聚焦在圖片中心 */
 }
 
+/* 文章右側文字區塊 */
 .a_right {
-    flex: 1;
-    padding: 5%;
+    flex: 1; /* 佔文章的另一半空間 */
+    padding: 5%; /* 內距，讓文字不要貼齊邊緣 */
     box-sizing: border-box;
     color: #5C3A21;
-    text-align: left;
-    line-height: 2.2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    text-align: left; /* 文字靠左對齊 */
+    line-height: 2.2rem; /* 增加行高，讓閱讀更舒適 */
+    display: flex; /* 使用 Flexbox */
+    flex-direction: column; /* 內容垂直排列 */
+    justify-content: center; /* 內容垂直置中 */
 }
 
 .a_right h2 {
     font-size: 2.5rem;
     color: #D97736;
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* 標題與段落的距離 */
 }
 
-/*footer*/
+
+/* =========================================
+   頁尾區塊 (Footer)
+========================================= */
 footer {
-    clear: both;
-    width: 100%;
-    padding: 60px 0px;
-    text-align: center;
-    background-color: #5C3A21;
-    color: #FDF8F5;
+    clear: both; /* 清除所有浮動影響 */
+    width: 100%; /* 寬度滿版 */
+    padding: 60px 0px; /* 上下內距 */
+    text-align: center; /* 文字置中 */
+    background-color: #5C3A21; /* 深棕色底 */
+    color: #FDF8F5; /* 米白色字 */
     font-weight: bold;
-    border-top: 6px solid #D97736;
+    border-top: 6px solid #D97736; /* 頂部加上橘色分隔線 */
 }
 
-/*for tablets*/
+
+/* =========================================
+   RWD 設定：平板版面 (1200px 以下)
+========================================= */
+/* 當螢幕寬度小於 1200px 時執行的 CSS */
 @media only screen and (max-width: 1200px) {
     section {
-        width: 90%;
+        width: 90%; /* 將版面寬度拉大至 90%，減少兩側空白，讓空間更好運用 */
     }
 }
 
-/*for mobile*/
+
+/* =========================================
+   RWD 設定：手機版面 (768px 以下)
+========================================= */
+/* 當螢幕寬度小於 768px (通常為手機) 時執行的 CSS */
 @media only screen and (max-width: 768px) {
     body {
-        font-size: 1.3rem;
+        font-size: 1.3rem; /* 稍微放大手機版基礎字體，提升可讀性 */
     }
     
+    /* 導覽列容器改為垂直排列 */
     .menu {
         margin: 20px auto;
-        flex-direction: column;
+        flex-direction: column; /* 讓 Logo 與選單變成上下推疊 */
     }
 
+    /* Logo 置中並縮小尺寸 */
     .logo {
         text-align: center;
     }
-
     .logo img {
-        width: 30%;
+        width: 30%; /* 手機上 Logo 變小 */
         margin: auto;
     }
 
+    /* 選單連結置中並變成區塊 */
     nav {
         text-align: center;
     }
-
-    
     nav a {
-        padding: 10px;
-        display: block;
+        padding: 10px; /* 減少內距 */
+        display: block; /* 讓連結變成區塊，每個連結佔滿一行 (可視設計需求而定) */
     }
 
+    /* 主視覺區塊高度縮小 */
     .hero {
-        height: 60vh;
+        height: 60vh; /* 從 90vh 縮小到 60vh，避免佔滿整個手機螢幕 */
     }
 
+    /* 調整手機版的主視覺大字 */
     .hero h1 {
-        top: 40%;
-        font-size: clamp(30px, 10vw, 60px);
+        top: 40%; /* 稍微下移 */
+        /* RWD設定：手機版將字體範圍縮小為 30px ~ 60px，確保能放進同一排 */
+        font-size: clamp(30px, 10vw, 60px); 
         text-shadow: 2px 2px 0px #FFFFFF, 4px 4px 0px #D97736;
     }
 
+    /* 卡片從 1 行 4 個，變成 1 行 2 個 */
     .card {
-        flex: 0 0 calc((100% - 20px * 1) / 2);
+        /* 計算：100% 減去 1 個 20px 的間距後，除以 2 */
+        flex: 0 0 calc((100% - 20px * 1) / 2); 
     }
 
+    /* 文章佈局：從左右排列改成上下排列 */
     article {
-        flex-direction: column;
-        border-radius: 20px;
+        flex-direction: column; /* 圖片在上方，文字在下方 */
+        border-radius: 20px; /* 手機版圓角變小 */
     }
 
+    /* 取消偶數項文章的反轉排列，確保手機上全部統一為圖片在上、文字在下 */
     section > a:nth-of-type(2n) article {
-        flex-direction: column;
+        flex-direction: column; 
     }
 
+    /* 調整手機版文章內的間距與標題大小 */
     .a_right {
-        padding: 8%;
+        padding: 8%; /* 稍微增加文字兩側的留白 */
     }
-
     .a_right h2 {
-        font-size: 2rem;
+        font-size: 2rem; /* 標題稍微縮小 */
     }
 }
