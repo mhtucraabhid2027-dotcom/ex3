@@ -64,7 +64,7 @@ header {
 
 /* menu 選單容器 */
 .menu {
-    width: 90%; /* 寬度佔畫面的 80% */
+    width: 90%; /* 寬度佔畫面的 90% */
     margin: 10px auto; /* 上下邊距 10px，左右置中 */
     display: flex; /* 使用 Flexbox 排版，讓 Logo 和導覽列並排 */
     align-items: center; /* 讓內部元素垂直置中對齊 */
@@ -134,19 +134,36 @@ nav a:hover {
     text-overflow: ellipsis;
 }
 
+/* 定義主視覺標題的漸入動畫 */
+@keyframes fadeInTitle {
+    0% {
+        opacity: 0;
+        /* 起始位置稍微偏下 */
+        transform: translate(-50%, -40%);
+    }
+    100% {
+        opacity: 1;
+        /* 結束時回到正中央 */
+        transform: translate(-50%, -50%);
+    }
+}
+
 .hero h1 {
     position: absolute; /* 絕對定位，浮在圖片上方 */
     top: 20%; /* 距離頂部 20% */
     left: 50%; /* 距離左側 50% */
-    transform: translate(-50%, -50%); /* 向左向上了自身寬高的 50%，達成完美置中效果 */
+    /* 將預設的 transform 交由 animation 處理 */
     
     /* RWD設定：字體大小會隨螢幕寬度 (vw) 自動縮放，最小 40px，最大 100px */
     font-size: clamp(40px, 8vw, 100px); 
     white-space: nowrap; /* 強制標題文字不換行，保持單行排版 */
     color: #5C3A21;
-    /* 文字陰影：創造白底+橘底的可愛雙層立體感 */
     text-shadow: 4px 4px 0px #FFFFFF, 8px 8px 0px #D97736;
     font-weight: 700;
+    
+    /* 【已修改】套用漸入動畫 (播放時間 1.5秒，動畫結束後停留在最後狀態) */
+    opacity: 0;
+    animation: fadeInTitle 1.5s ease-out forwards;
 }
 
 
@@ -219,8 +236,10 @@ section h1 {
     text-align: center; /* 卡片內容置中 */
     cursor: pointer; /* 滑鼠移過去變成手指圖示，提示可點擊 */
     
+    /* 【已修改】加入 3D 視角 (perspective)，讓翻轉動畫有真實的 3D 空間感 */
+    perspective: 1000px;
+    
     white-space: nowrap; /* 強制文字不換行 */
-    /* RWD設定：縮放字體 */
     font-size: clamp(0.75rem, 1.2vw, 1rem); 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -232,14 +251,9 @@ section h1 {
     border: 5px solid #D97736; /* 橘色實心粗邊框 */
     box-shadow: 0 8px 15px rgba(92, 58, 33, 0.15); /* 底部陰影 */
     
-    /* 預設旋轉角度為 0 (不旋轉) */
-    -ms-transform: rotate(0deg); 
-    -webkit-transform: rotate(0deg); 
-    transform: rotate(0deg); 
-    
-    /* 設定轉場動畫：所有 transform 效果耗時 0.6 秒，並使用彈性貝茲曲線創造回彈感 */
-    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    -webkit-transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* 【已修改】開啟 3D 變形支援，並將轉場時間設為 0.8秒 */
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
     
     white-space: nowrap; 
     font-size: clamp(0.75rem, 1.2vw, 1rem); 
@@ -249,10 +263,8 @@ section h1 {
 
 /* 滑鼠懸停在卡片時，針對裡面的圖片產生特效 */
 .card:hover img {
-    /* 往左旋轉 15 度，並放大 1.1 倍 (產生可愛的跳動感) */
-    -ms-transform: rotate(-15deg) scale(1.1); 
-    -webkit-transform: rotate(-15deg) scale(1.1); 
-    transform: rotate(-15deg) scale(1.1); 
+    /* 【已修改】沿著 Y 軸翻轉 360 度 (轉一圈回到正面，模擬翻卡片) */
+    transform: rotateY(360deg); 
 }
 
 
@@ -385,6 +397,8 @@ footer {
 
     /* 調整手機版的主視覺大字 */
     .hero h1 {
+        /* 在手機板重新校正置中屬性 */
+        transform: translate(-50%, -50%); 
         top: 40%; /* 稍微下移 */
         /* RWD設定：手機版將字體範圍縮小為 30px ~ 60px，確保能放進同一排 */
         font-size: clamp(30px, 10vw, 60px); 
