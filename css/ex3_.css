@@ -175,6 +175,12 @@ section h1 {
     flex: 0 0 calc((100% - 20px * 3) / 4);
     text-align: center;
     cursor: pointer;
+    white-space: nowrap; /* 強制文字不換行 */
+    /* 字體大小縮放：最小 12px (0.75rem)，浮動值 1.2vw，最大約 16px (1rem) */
+    font-size: clamp(0.75rem, 1.2vw, 1rem); 
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card img {
@@ -190,6 +196,12 @@ section h1 {
     
     transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     -webkit-transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    white-space: nowrap; /* 強制文字不換行 */
+    /* 字體大小縮放：最小 12px (0.75rem)，浮動值 1.2vw，最大約 16px (1rem) */
+    font-size: clamp(0.75rem, 1.2vw, 1rem); 
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card:hover img {
